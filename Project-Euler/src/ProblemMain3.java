@@ -1,19 +1,41 @@
+import java.util.Vector;
+
 class Problem3 {
-	int count = 0;
-	int result = 0;
+	long count = 0;
+	Vector<Long> v = new Vector<Long>();
 	
-	public void Problem3Set(int count) {
+	public void Problem3Set(long count) {
 		this.count = count;
-		
-		for(int i=0;i<count;i++){
+
+		for(long i = 2;i<=count;i++){
 			if(count%i == 0){
-				System.out.println(i);
+				v.addElement(i);
 			}
 		}
+		
+		for(long i = 2;i<=Math.sqrt(count);i++){
+			if(v.contains(i)){
+				for(long j = i; j*i <= count;j++) {
+					v.removeElement(j*i);
+				}
+			}
+		}
+		
+//		for(long i = 2;i<=count;i++) {
+//			if(count%i == 0){
+//				v.addElement(i);
+//			}
+//			for(long j = 2;j<i;j++){
+//					if(i%j == 0){
+//						v.removeElement(i);
+//				}
+//			}
+//		}
+		
 	}
 	
-	public int Problem3Get() {
-		return this.result;
+	public Vector<Long> Problem3Get() {
+		return v;
 	}
 	
 }
@@ -21,6 +43,7 @@ class Problem3 {
 public class ProblemMain3 {
 	public static void main(String[] args) {
 		Problem3 P3 = new Problem3();
-		P3.Problem3Set(10);
+		P3.Problem3Set(600851475143L);
+		System.out.println(P3.Problem3Get());
 	}
 }
