@@ -1,7 +1,7 @@
 /**
   * Created by NDS_047 on 2018-11-20.
   */
-object Main {
+object Lecture {
   def main(args: Array[String]): Unit = {
     var cases = Integer.parseInt(readLine())
     while (cases > 0) {
